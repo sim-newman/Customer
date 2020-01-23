@@ -21,6 +21,13 @@ public class HttpRequestTest {
     private TestRestTemplate restTemplate;
 
     @Test
+    public void indexShouldReturnDefualtMessage() throws Exception {
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
+                String.class)).isEqualToIgnoringCase("Customer Application is up!");
+    }
+
+
+    @Test
     public void greetingShouldReturnDefaultMessage() throws Exception {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/greeting",
                 String.class)).contains("World");
