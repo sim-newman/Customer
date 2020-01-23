@@ -24,8 +24,10 @@ public class CustomerController {
     public String index(){return "Customer Application is up!";}
 
     @RequestMapping("/greeting")
-    public Customer greeting(@RequestParam(value="name", defaultValue="World") String name) {
-        return new Customer(counter.incrementAndGet(),
-                String.format(template, name));
+    public Customer greeting(@RequestParam(value="firstName", defaultValue="World") String firstName,
+                             @RequestParam(value="lastName", defaultValue="World") String lastName) {
+        return new Customer(String.format(template, firstName), String.format(template, lastName) );
     }
+
+
 }

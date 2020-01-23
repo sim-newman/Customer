@@ -1,19 +1,33 @@
 package com.simnewman;
 
-public class Customer {
-    private final long id;
-    private final String lastname;
+import javax.persistence.*;
 
-    public Customer(long id, String lastname) {
-        this.id = id;
-        this.lastname = lastname;
+@Entity
+@Table(name="customers")
+public class Customer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(name="first_name")
+    private String firstName;
+    @Column(name="surname")
+    private String lastName;
+
+    //Default constructor not used, it is only used for JPA
+    protected Customer (){}
+
+    public Customer(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public long getId() {
         return id;
     }
-
-    public String getLastname() {
-        return lastname;
+    public String getFirstName() {
+        return firstName;
     }
+    public String getLastName() { return lastName; }
 }
